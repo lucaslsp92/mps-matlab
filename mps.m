@@ -4,3 +4,4 @@ fileName = strcat(folder, file);
 
 [npart, grid] = readGrid(fileName);
 [lambda]=calcLambda(0.01,4);
+[pnd]=calcpnd(0.01,4);
