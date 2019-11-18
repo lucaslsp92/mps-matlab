@@ -1,3 +1,17 @@
+dim = 2              %dimensão 2 ou 3
+gravx = 0            %gravidade na direção x
+gravy = -9.786966    %gravidade na direção y
+gravz = 0            %gravidade na direção z
+visc = 10**-6        %viscosidade do fluído
+dens = 10**3         %densidade do fluído
+
+time = 10            %tempo de simulação
+step = 0.001         %tempo entre cada passo
+print = 0.01         %tempo entre cada impressão
+
+npart = 1500         %número de partículas
+partdist = 0.1       %distância entre partículas
+
 folder = "C:\Users\lucas_pereira.TPN2\Documents\mps\";
 file = "2D_dam_1512.grid";
 fileName = strcat(folder, file);
