@@ -25,3 +25,4 @@ fileName = strcat(folder, file);
 [lambda]=calcLambda(l0,r.large,d);
 [pnd0]=calcpnd0(l0,r.large,d);
 [part]=init(npart,grid,rho,nu,g);
+[neigh,nNeigh]=neighborhood(npart,part,maxNeigh,l0,r.small,d);
