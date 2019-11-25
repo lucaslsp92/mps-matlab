@@ -1,21 +1,21 @@
 function [part]=init(npart,grid,rho,nu,g)
     [yf]=colHeight(grid,npart,g);
     for i=1:npart
-        grid(i).rho = rho;
-        grid(i).nu = nu;
+        grid.rho(i) = rho;
+        grid.nu(i) = nu;
         if (g.x == -9.786966)
-            grid(i).p = abs((yf-grid(i).x)*g.x*grid(i).rho);
+            grid.p(i) = abs((yf-grid.x(i))*g.x*grid.rho(i));
         elseif (g.y == -9.786966)
-            grid(i).p = abs((yf-grid(i).y)*g.y*grid(i).rho);
+            grid.p(i) = abs((yf-grid.y(i))*g.y*grid.rho(i));
         elseif (g.z == -9.786966)
-            grid(i).p = abs((yf-grid(i).z)*g.z*grid(i).rho);
+            grid.p(i) = abs((yf-grid.z(i))*g.z*grid.rho(i));
         end
-        grid(i).ustar = grid(i).u;
-        grid(i).vstar = grid(i).v;
-        grid(i).wstar = grid(i).w;
-        grid(i).ax = 0;
-        grid(i).ay = 0;
-        grid(i).az = 0;
+        grid.ustar(i) = grid.u(i);
+        grid.vstar(i) = grid.v(i);
+        grid.wstar(i) = grid.w(i);
+        grid.ax(i) = 0;
+        grid.ay(i) = 0;
+        grid.az(i) = 0;
     end
     part = grid;
 end

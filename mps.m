@@ -27,3 +27,5 @@ fileName = strcat(folder, file);
 [part]=init(npart,grid,rho,nu,g);
 [neigh,nNeigh]=neighborhood(npart,part,maxNeigh,l0,r.small,d);
 [part]=pndbc(npart,part,r.small,l0,neigh,nNeigh,maxNeigh,d,surf.Beta,pnd0);
+
+scatter(part.x,part.y,l0*10000,part.pnd,'filled');

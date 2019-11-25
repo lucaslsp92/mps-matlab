@@ -3,15 +3,15 @@ function [npart,part]=readGrid(fileName)
     fscanf(fileID,'%f',1);
     npart = fscanf(fileID,'%d',1);
     for i=1:npart
-        part(i).mat = fscanf(fileID, '%d',1);
-        part(i).x = fscanf(fileID, '%f',1);
-        part(i).y = fscanf(fileID, '%f',1);
-        part(i).z = fscanf(fileID, '%f',1);
-        part(i).u = fscanf(fileID, '%f',1);
-        part(i).v = fscanf(fileID, '%f',1);
-        part(i).w = fscanf(fileID, '%f',1);
-        part(i).pnd = fscanf(fileID, '%f',1);
-        part(i).p = fscanf(fileID, '%f',1);
+        part.mat(i) = fscanf(fileID, '%d',1);
+        part.x(i) = fscanf(fileID, '%f',1);
+        part.y(i) = fscanf(fileID, '%f',1);
+        part.z(i) = fscanf(fileID, '%f',1);
+        part.u(i) = fscanf(fileID, '%f',1);
+        part.v(i) = fscanf(fileID, '%f',1);
+        part.w(i) = fscanf(fileID, '%f',1);
+        part.pnd(i) = fscanf(fileID, '%f',1);
+        part.p(i) = fscanf(fileID, '%f',1);
     end
     fclose(fileID);
 end

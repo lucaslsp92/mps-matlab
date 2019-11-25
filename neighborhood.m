@@ -4,7 +4,7 @@ function [neigh,nNeigh]=neighborhood(npart,part,maxNeigh,l0,rad,dim)
    if (dim == 2)
        for i=1:npart
            for j=1:npart
-               qdist = power(part(i).x-part(j).x,2) + power(part(i).y-part(j).y,2);
+               qdist = power(part.x(i)-part.x(j),2) + power(part.y(i)-part.y(j),2);
                re = rad*l0;
                qre = power(re,2);                                  
                if (qdist < qre && qdist > 0 && nNeigh(i) < maxNeigh)
@@ -18,7 +18,7 @@ function [neigh,nNeigh]=neighborhood(npart,part,maxNeigh,l0,rad,dim)
    elseif (dim == 3)
        for i=1:npart
            for j=1:npart
-               qdist = power(part(i).x-part(j).x,2) + power(part(i).y-part(j).y,2) + power(part(i).z-part(j).z,2);
+               qdist = power(part.x(i)-part.x(j),2) + power(part.y(i)-part.y(j),2) + power(part.z(i)-part.z(j),2);
                re = rad*l0;
                qre = power(re,2);                                  
                if (qdist < qre && qdist > 0 && nNeigh(i) < maxNeigh)
