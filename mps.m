@@ -23,6 +23,7 @@ fileName = strcat(folder, file);
 
 [npart, grid] = readGrid(fileName);
 [lambda]=calcLambda(l0,r.large,d);
-[pnd0]=calcpnd0(l0,r.large,d);
+[pnd0]=calcpnd0(l0,r.small,d);
 [part]=init(npart,grid,rho,nu,g);
 [neigh,nNeigh]=neighborhood(npart,part,maxNeigh,l0,r.small,d);
+[part]=pndbc(npart,part,r.small,l0,neigh,nNeigh,maxNeigh,d,surf.Beta,pnd0);

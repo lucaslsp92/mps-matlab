@@ -1,4 +1,4 @@
-function [lambda]=calcLambda(partdist,large,dim)
+function [lambda]=calcLambda(partdist,rad,dim)
     dd = 0;                %sum of dividend of lambda
     ds = 0;                %sum of divisor of lambda
     
@@ -6,7 +6,7 @@ function [lambda]=calcLambda(partdist,large,dim)
         for i = -5:5
             for j = -5:5
                 qdist = power(i*partdist,2) + power(j*partdist,2);  %quadratic distance between particles
-                re = large*partdist;                                %max distance of particles considered in lambda
+                re = rad*partdist;                                %max distance of particles considered in lambda
                 qre = power(re,2);                                  
                 if (qdist < qre && qdist > 0)
                     dist = sqrt(qdist);                             %distance between particles
@@ -22,7 +22,7 @@ function [lambda]=calcLambda(partdist,large,dim)
             for j = -5:5
                 for k = -5:5
                     qdist = power(i*partdist,2) + power(j*partdist,2) + power(k*partdist,2);  %quadratic distance between particles
-                    re = large*partdist;                                %max distance of particles considered in lambda
+                    re = rad*partdist;                                %max distance of particles considered in lambda
                     qre = power(re,2);                                  
                     if (qdist < qre && qdist > 0)
                         dist = sqrt(qdist);                             %distance between particles
