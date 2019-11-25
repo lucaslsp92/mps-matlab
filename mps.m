@@ -21,6 +21,6 @@ folder = "C:\Users\lucas_pereira.TPN2\Documents\mps\";
 file = "2D_dam_1512.grid";
 fileName = strcat(folder, file);
 
-[npart, grid] = readGrid(fileName);
+[npart, part] = readGrid(fileName);
 [lambda]=calcLambda(partDist,large,dim);
-[pnd]=calcpnd(partDist,large,dim);
+[pnd0]=calcpnd0(partDist,large,dim);
