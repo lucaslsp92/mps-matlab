@@ -1,6 +1,6 @@
-function [Acc]=calcAcc(npart, gravx, gravy, gravz, dim, lambda, pnd0_large, ID, Pos, Vel, pnd_small, press, partdist, radiiS, radiiL)
+function [part]=calcAcc(npart, gravx, gravy, gravz, dim, lambda, pnd0_large, ID, Pos, Vel, pnd_small, press, partdist, radiiS, radiiL)
     for i = 1:npart
-        Acc(i,1) = gravx;
+        Acc(i,1) = gravx; %Usar part.ax(i)
         Acc(i,2) = gravy;
         Acc(i,3) = gravz;
     end
