@@ -1,18 +1,22 @@
-function [npart,grid]=readGrid(fileName)
+function [npart,ID, Pos, Vel, pnd_small, press]=readGrid(fileName)
     fileID = fopen(fileName,'r');
     fscanf(fileID,'%f',1);
     npart = fscanf(fileID,'%d',1);
-    grid = zeros(npart,9);
+    ID = zeros(npart,1);
+    Pos = zeros(npart,3);
+    Vel = zeros(npart,3);
+    pnd_small = zeros(npart,1);
+    press = zeros(npart,1);
     for i=1:npart
-        grid(i,1) = fscanf(fileID, '%d',1);
-        grid(i,2) = fscanf(fileID, '%f',1);
-        grid(i,3) = fscanf(fileID, '%f',1);
-        grid(i,4) = fscanf(fileID, '%f',1);
-        grid(i,5) = fscanf(fileID, '%f',1);
-        grid(i,6) = fscanf(fileID, '%f',1);
-        grid(i,7) = fscanf(fileID, '%f',1);
-        grid(i,8) = fscanf(fileID, '%f',1);
-        grid(i,9) = fscanf(fileID, '%f',1);
+        ID(i,1) = fscanf(fileID, '%d',1);
+        Pos(i,1) = fscanf(fileID, '%f',1);
+        Pos(i,2) = fscanf(fileID, '%f',1);
+        Pos(i,3) = fscanf(fileID, '%f',1);
+        Vel(i,1) = fscanf(fileID, '%f',1);
+        Vel(i,2) = fscanf(fileID, '%f',1);
+        Vel(i,3) = fscanf(fileID, '%f',1);
+        pnd_small(i,1) = fscanf(fileID, '%f',1);
+        Press(i,1) = fscanf(fileID, '%f',1);
     end
     fclose(fileID);
 end
