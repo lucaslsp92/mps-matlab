@@ -1,27 +1,27 @@
-function [part]=calcAcc(npart, gravx, gravy, gravz, dim, lambda, pnd0_large, ID, Pos, Vel, pnd_small, press, partdist, radiiS, radiiL)
+function [Acc]=calcAcc(npart, part, g, dim, lambda, pnd0L, pnd0S, l0, radiiS, radiiL)
     for i = 1:npart
-        Acc(i,1) = gravx; %Usar part.ax(i)
-        Acc(i,2) = gravy;
-        Acc(i,3) = gravz;
+        Acc.x(i) = g.x;
+        Acc.y(i) = g.y;
+        Acc.z(i) = g.z;
     end
     if (dim == 2)  
-        k = 2*dim/(pnd0_large*lambda);
+        k = 2*dim/(pnd0L*lambda);
         for i = 1:npart
             somaVx = 0;
             somaVy = 0;
             Wij = 0;
             for j = 1:npart
-                qdist = power(Pos(j,1)-Pos(i,1),2) + power(Pos(j,2)-Pos(i,2),2);  %quadratic distance between particles
-                qre = power(radiiL*partdist,2); 
+                qdist = power(part.x(j)-part.x(i),2) + power(part.y(j)-part.y(i),2);  %quadratic distance between particles
+                qre = power(radiiL*l0,2); 
                 if (qdist < qre && qdist > 0)
-                    somaVx = somaVx + (Vel(j,1)-Vel(i,1));
-                    somaVy = somaVy + (Vel(j,2)-Vel(i,2));
+                    somaVx = somaVx + (part.u(j)-part.u(i));
+                    somaVy = somaVy + (part.v(j)-part.v(i));
                     Wij = Wij + (sqrt(qre)/sqrt(qdist) - 1);
                 end
             end
             
-            Acc(i,1) = Acc(i,1) + k*somaVx*(sqrt(qre)/sqrt(qdist) - 1);
-            Acc(i,2) = Acc(i,2) + k*somaVy*(sqrt(qre)/sqrt(qdist) - 1);
+            Acc.x(i) = Acc.x(i) + k*somaVx*(sqrt(qre)/sqrt(qdist) - 1);
+            Acc.y(i) = Acc.y(i) + k*somaVy*(sqrt(qre)/sqrt(qdist) - 1);
         end
     end
 end

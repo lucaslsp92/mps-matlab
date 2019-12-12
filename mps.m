@@ -23,11 +23,11 @@ fileName = strcat(folder, file);
 
 [npart, grid] = readGrid(fileName);
 [lambda]=calcLambda(l0,r.large,d);
-[pnd0]=calcpnd0(l0,r.small,d);
+[pnd0S, pnd0L]=calcpnd0(l0,r.small, r.large,d);
 [part]=init(npart,grid,rho,nu,g);
 [neigh,nNeigh]=neighborhood(npart,part,maxNeigh,l0,r.small,d);
-[part]=pndbc(npart,part,r.small,l0,neigh,nNeigh,maxNeigh,d,surf.Beta,pnd0);
-[Acc] = calcAcc(npart, gravx, gravy, gravz, dim, lambda, pnd0_large, ID, Pos, Vel, pnd_small, press, partDist, small, large);
+[part]=pndbc(npart,part,r.small,l0,neigh,nNeigh,maxNeigh,d,surf.Beta,pnd0S);
+[Acc] = calcAcc(npart, grid, g, d, lambda, pnd0L, pnd0S, l0, r.small, r.large);
 
 
 scatter(part.x,part.y,l0*10000,part.pnd,'filled');
