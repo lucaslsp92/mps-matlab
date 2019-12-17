@@ -1,4 +1,4 @@
-function [pnd0S, pnd0L]=calcpnd0(partdist,radiiS, radiiL,dim)  
+function [pnd0S, pnd0L]=calcpnd0(partdist,radiiS,radiiL,dim)  
     pnd0S = 0;
     pnd0L = 0;
     if (dim == 2)
@@ -12,12 +12,12 @@ function [pnd0S, pnd0L]=calcpnd0(partdist,radiiS, radiiL,dim)
                 if (qdist < qreL && qdist > 0)
                     dist = sqrt(qdist);                             %distance between particles
                     wL = reL/dist - 1;                                %weight of particle
-                    pnd0L = wL + pnd0L
-                    if (qdist < qreS && qdist > 0)
-                        dist = sqrt(qdist);                             %distance between particles
-                        wS = reS/dist - 1;                                %weight of particle
-                        pnd0S = wS + pnd0S
-                    end
+                    pnd0L = wL + pnd0L;
+                end
+                if (qdist < qreS && qdist > 0)
+                    dist = sqrt(qdist);                             %distance between particles
+                    wS = reS/dist - 1;                                %weight of particle
+                    pnd0S = wS + pnd0S;
                 end
             end
         end
@@ -34,11 +34,11 @@ function [pnd0S, pnd0L]=calcpnd0(partdist,radiiS, radiiL,dim)
                         dist = sqrt(qdist);                             %distance between particles
                         wL = reL/dist - 1;                                %weight of particle
                         pnd0L = wL + pnd0L;
-                        if (qdist < qreS && qdist > 0)
-                            dist = sqrt(qdist);                             %distance between particles
-                            wS = reS/dist - 1;                                %weight of particle
-                            pndS = wS + pndS;
-                        end
+                    end
+                    if (qdist < qreS && qdist > 0)
+                        dist = sqrt(qdist);                             %distance between particles
+                        wS = reS/dist - 1;                                %weight of particle
+                        pndS = wS + pndS;
                     end
                 end
             end
